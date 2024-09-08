@@ -16,6 +16,8 @@ public class Question3 {
         FileReader g = new FileReader("C:\\VS\\Java\\Comp3112024\\src\\lab1\\numbers.txt");
         Scanner read = new Scanner(f);
         Scanner cool = new Scanner(g);
+       
+        
         int i = 0, j = 0, largest, smallest;
         int sum = 0;
 
@@ -24,15 +26,16 @@ public class Question3 {
             System.out.println(read.nextInt());
             i++;
         }
-        f.close();
+       f.close();
 
         // writing contents of file to array
         int[] arr = new int[i];
+        
         while (cool.hasNextInt()) {
             arr[j] = cool.nextInt();
             j++;
         }
-        g.close();
+        
 
         // Getting sum of all numbers
         for (int k = 0; k < arr.length; k++) {
