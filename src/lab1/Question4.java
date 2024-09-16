@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Question4 {
 
+    @SuppressWarnings("resource")
     public static void main(String[] args) {
 
         // declarations

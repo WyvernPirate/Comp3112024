@@ -9,13 +9,14 @@ import java.util.Scanner;
 
 public class Question3 {
 
+    @SuppressWarnings("resource")
     public static void main(String[] args) throws Exception {
 
         // Declarations
         FileReader f = new FileReader("C:\\VS\\Java\\Comp3112024\\src\\lab1\\numbers.txt");
-        FileReader g = new FileReader("C:\\VS\\Java\\Comp3112024\\src\\lab1\\numbers.txt");
+        //FileReader g = new FileReader("C:\\VS\\Java\\Comp3112024\\src\\lab1\\numbers.txt");
         Scanner read = new Scanner(f);
-        Scanner cool = new Scanner(g);
+        Scanner cool = new Scanner(f);
        
         
         int i = 0, j = 0, largest, smallest;
