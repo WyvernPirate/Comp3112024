@@ -40,7 +40,7 @@ public class Question2 {
 
         // Outputs
         System.out.println("Names: " + name.toUpperCase());
-        System.out.println("Net Salary: P" + netSalary);
+        System.out.printf("Net Salary: P%.2f",netSalary);
 
     }
 }
