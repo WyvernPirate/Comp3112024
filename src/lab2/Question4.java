@@ -26,7 +26,7 @@ public class Question4 {
             }
         }
 
-        // Printing the array and getting sum
+        // Printing the array 
         System.out.println("Elements of the Array :");
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < arr[i].length; j++) {

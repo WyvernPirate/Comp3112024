@@ -13,7 +13,8 @@ public class Question2 {
         Scanner f = new Scanner(file);
 
         if (f.hasNextLine()) {
-            System.out.println(f.next());
+            System.out.print(f.nextLine());
+            
         }
 
     }
