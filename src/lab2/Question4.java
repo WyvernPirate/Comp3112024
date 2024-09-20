@@ -16,6 +16,7 @@ public class Question4 {
         row = scanner.nextInt();
         System.out.print("Enter the number of columns: ");
         column = scanner.nextInt();
+        scanner.close();
 
         int[][] arr = new int[row][column];
 

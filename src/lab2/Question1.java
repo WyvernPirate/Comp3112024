@@ -20,6 +20,7 @@ public class Question1 {
         num1 = scanner.nextInt();// a
         System.out.print("Enter the second number:");
         num2 = scanner.nextInt();// b
+        scanner.close();
 
         // Printing even numbers between a and b
         System.out.println("Even numbers between " + num1 + " and " + num2+" are :");
