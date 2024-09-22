@@ -5,18 +5,17 @@ package lab2;
  */
 
 public class Question6 {
-    // instance variable to store the name
+    
     private String name;
 
-    // constructor to initialize the object
-    public Question6(String a, double b) {
-        // assign the input string to the instance variable
+    // constructor 
+        public Question6(String a, double b) {
         this.name = a;
 
         // print the name in uppercase
         System.out.println("The name " + name + " in uppercase is " + a.toUpperCase());
 
-        // print the result of multiplying the input number by 2
+        // print the result of multiplying number by 2
         System.out.println("The number " + b + " * 2 = " + b * 2);
     }
 
@@ -24,4 +23,7 @@ public class Question6 {
     String getName() {
         return name;
     }
+
+
+    
 }
