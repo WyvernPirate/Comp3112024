@@ -1,0 +1,5 @@
+Savings, 1001, Luwis Abednico, 5000.00
+Checking, 1002, Ineeleng Bagalatia, 3000.00
+Savings, 1003, Tanatswa Chisuko, 8000.00
+Checking, 1004, Michael Johnson, 2000.00
+Savings, 1005, Candy Dibobo, 6000.00

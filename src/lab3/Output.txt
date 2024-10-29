@@ -1,0 +1,13 @@
+
+Top 10 Students:
+Student ID: 24000009, Mark: 95
+Student ID: 24000003, Mark: 92
+Student ID: 24000014, Mark: 91
+Student ID: 24000007, Mark: 90
+Student ID: 24000012, Mark: 89
+Student ID: 24000004, Mark: 88
+Student ID: 24000008, Mark: 87
+Student ID: 24000015, Mark: 86
+Student ID: 24000001, Mark: 85
+Student ID: 24000010, Mark: 84
+Average of all students: 83.5
