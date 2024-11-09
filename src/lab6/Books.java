@@ -1,52 +1,41 @@
-```java
-public class Book {
+package lab6;
 
+public class Book {
     private int id;
     private String title;
     private String author;
     private double price;
+    private Date dueDate;
+    private double fine;
 
-    // CONSTRUCTOR
-    public Book(int id, String title, String author, double price) {
+    // Constructor
+    public Book(int id, String title, String author, double price, Date dueDate, double fine) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.price = price;
+        this.dueDate = dueDate;
+        this.fine = fine;
     }
 
-    // GETTERS AND SETTERS
-    public int getId() {
-        return id;
+    // Getters and setters for new fields
+    public Date getDueDate() {
+        return dueDate;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
     }
 
-    public String getTitle() {
-        return title;
+    public double getFine() {
+        return fine;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setFine(double fine) {
+        this.fine = fine;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
+    // toString method
     @Override
     public String toString() {
         return "Book{" +
@@ -54,6 +43,8 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", price=" + price +
+                ", dueDate=" + dueDate +
+                ", fine=" + fine +
                 '}';
     }
 }
@@ -67,26 +58,27 @@ class DatabaseOperations {
         this.connection = connection;
     }
 
-    // METHOD TO INSERT BOOK INTO DATABASE
     public void insertBook(Book book) throws SQLException {
-        String query = "INSERT INTO books (title, author, price) VALUES (?, ?, ?)";
+        String query = "INSERT INTO books (title, author, price, due_date, fine) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, book.getTitle());
             statement.setString(2, book.getAuthor());
             statement.setDouble(3, book.getPrice());
+            statement.setDate(4, new java.sql.Date(book.getDueDate().getTime())); // Convert Date to SQL Date
+            statement.setDouble(5, book.getFine());
             statement.executeUpdate();
         }
     }
 
-    // METHOD TO RETRIEVE BOOK FROM DATABASE
     public Book retrieveBook(int id) throws SQLException {
         String query = "SELECT * FROM books WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    return new Book(resultSet.getInt("id"), resultSet.getString("title"), resultSet.getString("author"),
-                            resultSet.getDouble("price"));
+                    return new Book(resultSet.getInt("id"), resultSet.getString("title"),
+                            resultSet.getString("author"), resultSet.getDouble("price"),
+                            resultSet.getDate("due_date"), resultSet.getDouble("fine"));
                 } else {
                     return null;
                 }
@@ -140,7 +132,8 @@ class DatabaseOperations {
             try (ResultSet resultSet = statement.executeQuery()) {
                 List<Book> books = new ArrayList<>();
                 while (resultSet.next()) {
-                    books.add(new Book(resultSet.getInt("id"), resultSet.getString("title"), resultSet.getString("author"),
+                    books.add(new Book(resultSet.getInt("id"), resultSet.getString("title"),
+                            resultSet.getString("author"),
                             resultSet.getDouble("price")));
                 }
                 return books;

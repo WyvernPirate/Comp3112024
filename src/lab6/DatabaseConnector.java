@@ -1,3 +1,5 @@
+package lab6;
+
 import java.sql.*;
 
 public class DatabaseConnector {
@@ -59,6 +61,30 @@ public class DatabaseConnector {
             System.out.println("Error closing connection: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    // fine system using sql triggers
+    public boolean updateTable() {
+        if (connection == null) {
+            System.out.println("Please connect to the database first.");
+            return false;
+        }
+        try (Statement statement = connection.createStatement()) {
+            String[] queries = {
+                    "ALTER TABLE Books ADD COLUMN due_date DATE",
+                    "ALTER TABLE Books ADD COLUMN fine DECIMAL(10, 2) DEFAULT 0.00",
+                    "CREATE TRIGGER update_fine AFTER UPDATE ON books FOR EACH ROW BEGIN IF NEW.due_date < CURDATE() THEN SET NEW.fine = DATEDIFF(CURDATE(), NEW.due_date); ELSE SET NEW.fine = 0; END IF; END;"
+            };
+            for (String query : queries) {
+                statement.executeUpdate(query);
+            }
+            System.out.println("Table updated");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Error updating table: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }

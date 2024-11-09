@@ -10,11 +10,11 @@ public class TestForBook {
         DatabaseOperations n = new DatabaseOperations(connector.getConnection());
 
         // inserting 5 books into the table
-        n.insertBook("The Great Gatsby", "F. Scott Fitzgerald", 340);
-        n.insertBook("1984", "George Orwell", 300);
-        n.insertBook("The Catcher in the Rye", "J.D. Salinger", 500);
-        n.insertBook("The Lord of the Rings", "J.R.R. Tolkien", 750);
-        n.insertBook("The Hunger Games", "Suzanne Collins", 200);
+        n.insertBook(new Book(1, "The Great Gatsby", "F. Scott Fitzgerald", 340));
+        n.insertBook(new Book(2, "1984", "George Orwell", 300));
+        n.insertBook(new Book(3, "The Catcher in the Rye", "J.D. Salinger", 500));
+        n.insertBook(new Book(4, "The Lord of the Rings", "J.R.R. Tolkien", 750));
+        n.insertBook(new Book(5, "The Hunger Games", "Suzanne Collins", 200));
 
         // UPDATE ONE BOOK
         n.updateBook(1, "The Great Gatsby", "Phemelo Moloi", 350);
