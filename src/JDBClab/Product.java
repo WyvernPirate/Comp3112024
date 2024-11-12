@@ -1,4 +1,3 @@
-package JBDCLab;
 
 public class Product {
 
